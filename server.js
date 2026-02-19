@@ -333,6 +333,11 @@ app.post("/submit-contact", async (req, res) => {
 
 
 
+app.get("/", (req,res)=>{
+  res.send("Backend working 🚀");
+});
+
+
 // -----------------------------
 // Start Server
 // -----------------------------

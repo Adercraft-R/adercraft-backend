@@ -113,8 +113,8 @@ app.post("/submit-portfolio1", async (req, res) => {
   try {
     const newPortfolio = new Portfolio(req.body);
     await newPortfolio.save();
-     const mailOptions = {
-      from: "adercraft39@gmail.com",
+     resend.emails.send({
+      from: "onboarding@resend.dev",
       to: "adercraft39@gmail.com",   // where you want to receive
       subject: "New Portfolio Order Received 🚀",
       html: `
@@ -129,17 +129,15 @@ app.post("/submit-portfolio1", async (req, res) => {
         <p><strong>Description:</strong> ${req.body.description}</p>
         <p><strong>Created At:</strong> ${newPortfolio.createdAt}</p>
       `
-    };
-// Save first
-    await newPortfolio.save();
-    
-    // Send mail in background (non-blocking)
-    transporter.sendMail(mailOptions)
-      .then(() => console.log("Mail sent successfully"))
-      .catch(err => console.log("Mail error:", err));
-    res.json({ message: "Requirements saved and sent successfully ✅" });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    })
+    .then(() => console.log("Mail sent successfully"))
+    .catch(err => console.log("Mail error:", err));
+
+    res.json({ message: "Requirements saved successfully ✅" });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -168,8 +166,8 @@ app.post("/submit-portfolio2", async (req, res) => {
   try {
     const newOrder = new DesignerPortfolio(req.body);
     await newOrder.save();
-    const mailOptions = {
-      from: "adercraft39@gmail.com",
+    resend.emails.send({
+      from: "onboarding@resend.dev",
       to: "adercraft39@gmail.com",   // where you want to receive
       subject: "New Portfolio Order Received 🚀",
       html: `
@@ -185,18 +183,15 @@ app.post("/submit-portfolio2", async (req, res) => {
         <p><strong>Created At:</strong> ${req.body.createdAt}</p>
         <p><strong>Created At:</strong> ${newOrder.createdAt}</p>
       `
-    };
-    // Save first
-    await newOrder.save();
-    
-    // Send mail in background (non-blocking)
-    transporter.sendMail(mailOptions)
-      .then(() => console.log("Mail sent successfully"))
-      .catch(err => console.log("Mail error:", err));
+    })
+    .then(() => console.log("Mail sent successfully"))
+    .catch(err => console.log("Mail error:", err));
 
-    res.json({ message: "Requirements saved and sent successfully ✅" });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.json({ message: "Requirements saved successfully ✅" });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -225,8 +220,8 @@ app.post("/submit-portfolio3", async (req, res) => {
   try {
     const newOrder = new FreelancerPortfolio(req.body);
     await newOrder.save();
-    const mailOptions = {
-      from: "adercraft39@gmail.com",
+    resend.emails.send({
+      from: "onboarding@resend.dev",
       to: "adercraft39@gmail.com",   // where you want to receive
       subject: "New Portfolio Order Received 🚀",
       html: `
@@ -242,18 +237,15 @@ app.post("/submit-portfolio3", async (req, res) => {
         <p><strong>Created At:</strong> ${req.body.createdAt}</p>
         <p><strong>Created At:</strong> ${newOrder.createdAt}</p>
       `
-    };
-    // Save first
-    await newOrder.save();
-    
-    // Send mail in background (non-blocking)
-    transporter.sendMail(mailOptions)
-      .then(() => console.log("Mail sent successfully"))
-      .catch(err => console.log("Mail error:", err));
+    })
+    .then(() => console.log("Mail sent successfully"))
+    .catch(err => console.log("Mail error:", err));
 
-    res.json({ message: "Requirements saved and sent successfully ✅" });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.json({ message: "Requirements saved successfully ✅" });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -283,8 +275,8 @@ app.post("/submit-website", async (req, res) => {
   try {
     const newOrder = new businessweb(req.body);
     await newOrder.save();
-    const mailOptions = {
-      from: "adercraft39@gmail.com",
+    resend.emails.send({
+      from: "onboarding@resend.dev",
       to: "adercraft39@gmail.com",   // where you want to receive
       subject: "New Website Order Received 🚀",
       html: `
@@ -300,19 +292,17 @@ app.post("/submit-website", async (req, res) => {
         <p><strong>Description:</strong> ${req.body.description}</p>
         <p><strong>Created At:</strong> ${newOrder.createdAt}</p>
       `
-    };
-    // Save first
-    await newOrder.save();
-    
-    // Send mail in background (non-blocking)
-    transporter.sendMail(mailOptions)
-      .then(() => console.log("Mail sent successfully"))
-      .catch(err => console.log("Mail error:", err));
-    res.json({ message: "Requirements saved and sent successfully ✅" });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    })
+    .then(() => console.log("Mail sent successfully"))
+    .catch(err => console.log("Mail error:", err));
+
+    res.json({ message: "Requirements saved successfully ✅" });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
   }
-})
+});
 
 
 
@@ -337,8 +327,8 @@ app.post("/submit-contact", async (req, res) => {
     const newContact = new Contact(req.body);
     await newContact.save();
 
-    const mailOptions = {
-      from: "adercraft39@gmail.com",
+    resend.emails.send({
+      from: "onboarding@resend.dev",
       to: "adercraft39@gmail.com",
       subject: "📩 New Contact Request",
       html: `
@@ -350,21 +340,15 @@ app.post("/submit-contact", async (req, res) => {
         <p><strong>Description:</strong> ${req.body.description}</p>
         <p><strong>Created At:</strong> ${newContact.createdAt}</p>
       `
-    };
+    })
+    .then(() => console.log("Mail sent successfully"))
+    .catch(err => console.log("Mail error:", err));
 
-    // Save first
-    await newContact.save();
-    
-    // Send mail in background (non-blocking)
-    transporter.sendMail(mailOptions)
-      .then(() => console.log("Mail sent successfully"))
-      .catch(err => console.log("Mail error:", err));
+    res.json({ message: "Requirements saved successfully ✅" });
 
-    res.json({ message: "✅ Contact request sent successfully!" });
-
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: error.message });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
   }
 });
 

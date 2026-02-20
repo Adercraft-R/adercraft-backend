@@ -77,7 +77,7 @@ app.post("/submit", async (req, res) => {
       `
     };
     // Save first
-    await Order.save();
+    await order.save();
     
     // Send mail in background (non-blocking)
     transporter.sendMail(mailOptions)

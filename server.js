@@ -3,7 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const app = express();
 app.use(cors({
@@ -58,7 +59,7 @@ app.post("/submit", async (req, res) => {
   try {
     const order = new Erp(req.body);
     await order.save();
-    const mailOptions = {
+    resend.emails.send({
       from: "adercraft39@gmail.com",
       to: "adercraft39@gmail.com",   // where you want to receive
       subject: "New ERP Order Received 🚀",
@@ -75,16 +76,14 @@ app.post("/submit", async (req, res) => {
         <p><strong>Description:</strong> ${req.body.institutionDetails}</p>
         <p><strong>Created At:</strong> ${order.createdAt}</p>
       `
-    };
-    // Save first
-    await order.save();
-    
-    // Send mail in background (non-blocking)
-    transporter.sendMail(mailOptions)
-      .then(() => console.log("Mail sent successfully"))
-      .catch(err => console.log("Mail error:", err));
-    res.json({ message: "Requirements saved and sent successfully ✅" });
+    })
+    .then(() => console.log("Mail sent successfully"))
+    .catch(err => console.log("Mail error:", err));
+
+    res.json({ message: "Requirements saved successfully ✅" });
+
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: err.message });
   }
 });

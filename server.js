@@ -25,15 +25,7 @@ mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("✅ MongoDB Atlas Connected"))
 .catch(err => console.log("❌ Connection Error:", err));
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
+
 
 
 // ======================================================

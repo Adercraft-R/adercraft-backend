@@ -74,8 +74,13 @@ app.post("/submit", async (req, res) => {
         <p><strong>Created At:</strong> ${order.createdAt}</p>
       `
     };
-    await transporter.sendMail(mailOptions);
-
+    // Save first
+    await newOrder.save();
+    
+    // Send mail in background (non-blocking)
+    transporter.sendMail(mailOptions)
+      .then(() => console.log("Mail sent successfully"))
+      .catch(err => console.log("Mail error:", err));
     res.json({ message: "Requirements saved and sent successfully ✅" });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -124,8 +129,13 @@ app.post("/submit-portfolio1", async (req, res) => {
         <p><strong>Created At:</strong> ${newPortfolio.createdAt}</p>
       `
     };
-    await transporter.sendMail(mailOptions);
-
+// Save first
+    await newOrder.save();
+    
+    // Send mail in background (non-blocking)
+    transporter.sendMail(mailOptions)
+      .then(() => console.log("Mail sent successfully"))
+      .catch(err => console.log("Mail error:", err));
     res.json({ message: "Requirements saved and sent successfully ✅" });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -175,7 +185,13 @@ app.post("/submit-portfolio2", async (req, res) => {
         <p><strong>Created At:</strong> ${newOrder.createdAt}</p>
       `
     };
-    await transporter.sendMail(mailOptions);
+    // Save first
+    await newOrder.save();
+    
+    // Send mail in background (non-blocking)
+    transporter.sendMail(mailOptions)
+      .then(() => console.log("Mail sent successfully"))
+      .catch(err => console.log("Mail error:", err));
 
     res.json({ message: "Requirements saved and sent successfully ✅" });
   } catch (error) {
@@ -226,7 +242,13 @@ app.post("/submit-portfolio3", async (req, res) => {
         <p><strong>Created At:</strong> ${newOrder.createdAt}</p>
       `
     };
-    await transporter.sendMail(mailOptions);
+    // Save first
+    await newOrder.save();
+    
+    // Send mail in background (non-blocking)
+    transporter.sendMail(mailOptions)
+      .then(() => console.log("Mail sent successfully"))
+      .catch(err => console.log("Mail error:", err));
 
     res.json({ message: "Requirements saved and sent successfully ✅" });
   } catch (error) {
@@ -278,7 +300,13 @@ app.post("/submit-website", async (req, res) => {
         <p><strong>Created At:</strong> ${newOrder.createdAt}</p>
       `
     };
-    await transporter.sendMail(mailOptions);
+    // Save first
+    await newOrder.save();
+    
+    // Send mail in background (non-blocking)
+    transporter.sendMail(mailOptions)
+      .then(() => console.log("Mail sent successfully"))
+      .catch(err => console.log("Mail error:", err));
     res.json({ message: "Requirements saved and sent successfully ✅" });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -323,7 +351,13 @@ app.post("/submit-contact", async (req, res) => {
       `
     };
 
-    await transporter.sendMail(mailOptions);
+    // Save first
+    await newOrder.save();
+    
+    // Send mail in background (non-blocking)
+    transporter.sendMail(mailOptions)
+      .then(() => console.log("Mail sent successfully"))
+      .catch(err => console.log("Mail error:", err));
 
     res.json({ message: "✅ Contact request sent successfully!" });
 

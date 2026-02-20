@@ -60,7 +60,7 @@ app.post("/submit", async (req, res) => {
     const order = new Erp(req.body);
     await order.save();
     resend.emails.send({
-      from: "adercraft39@gmail.com",
+      from: "onboarding@resend.dev",
       to: "adercraft39@gmail.com",   // where you want to receive
       subject: "New ERP Order Received 🚀",
       html: `
@@ -72,7 +72,7 @@ app.post("/submit", async (req, res) => {
         <p><strong>Days:</strong> ${req.body.totalDays}</p>
         <p><strong>Primary Color:</strong> ${req.body.primaryColor}</p>
         <p><strong>Secondary Color:</strong> ${req.body.secondaryColor}</p>
-        <p><strong>Features:</strong> ${req.body.features.join(", ")}</p>
+        <p><strong>Features:</strong> ${req.body.features?.join(", ")}</p>
         <p><strong>Description:</strong> ${req.body.institutionDetails}</p>
         <p><strong>Created At:</strong> ${order.createdAt}</p>
       `

@@ -52,7 +52,7 @@ app.post("/submit", async (req, res) => {
     const order = new Erp(req.body);
     await order.save();
     resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: "orders@adercraft.in",
       to: "adercraft39@gmail.com",   // where you want to receive
       subject: "New ERP Order Received 🚀",
       html: `
@@ -106,7 +106,7 @@ app.post("/submit-portfolio1", async (req, res) => {
     const newPortfolio = new Portfolio(req.body);
     await newPortfolio.save();
      resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: "orders@adercraft.in",
       to: "adercraft39@gmail.com",   // where you want to receive
       subject: "New Portfolio Order Received 🚀",
       html: `
@@ -159,7 +159,7 @@ app.post("/submit-portfolio2", async (req, res) => {
     const newOrder = new DesignerPortfolio(req.body);
     await newOrder.save();
     resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: "orders@adercraft.in",
       to: "adercraft39@gmail.com",   // where you want to receive
       subject: "New Portfolio Order Received 🚀",
       html: `
@@ -213,7 +213,7 @@ app.post("/submit-portfolio3", async (req, res) => {
     const newOrder = new FreelancerPortfolio(req.body);
     await newOrder.save();
     resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: "orders@adercraft.in",
       to: "adercraft39@gmail.com",   // where you want to receive
       subject: "New Portfolio Order Received 🚀",
       html: `
@@ -268,11 +268,11 @@ app.post("/submit-website", async (req, res) => {
     const newOrder = new businessweb(req.body);
     await newOrder.save();
     resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: "orders@adercraft.in",
       to: "adercraft39@gmail.com",   // where you want to receive
       subject: "New Website Order Received 🚀",
       html: `
-        <h3>New ERP Submission</h3>
+        <h3>New Business Website Submission</h3>
         <p><strong>Name:</strong> ${req.body.name}</p>
         <p><strong>Email:</strong> ${req.body.email}</p>
         <p><strong>Phone:</strong> ${req.body.phone}</p>
@@ -320,7 +320,7 @@ app.post("/submit-contact", async (req, res) => {
     await newContact.save();
 
     resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: "orders@adercraft.in",
       to: "adercraft39@gmail.com",
       subject: "📩 New Contact Request",
       html: `

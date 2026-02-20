@@ -108,7 +108,7 @@ app.post("/submit-portfolio1", async (req, res) => {
      resend.emails.send({
       from: "orders@adercraft.in",
       to: "adercraft39@gmail.com",   // where you want to receive
-      subject: "New Portfolio Order Received 🚀",
+      subject: "New Portfolio 1 Order Received 🚀",
       html: `
         <h3>New Portfolio Submission</h3>
         <p><strong>Name:</strong> ${req.body.name}</p>
@@ -161,7 +161,7 @@ app.post("/submit-portfolio2", async (req, res) => {
     resend.emails.send({
       from: "orders@adercraft.in",
       to: "adercraft39@gmail.com",   // where you want to receive
-      subject: "New Portfolio Order Received 🚀",
+      subject: "New Portfolio 2 Order Received 🚀",
       html: `
         <h3>New Portfolio Submission</h3>
         <p><strong>Name:</strong> ${req.body.name}</p>
@@ -215,7 +215,7 @@ app.post("/submit-portfolio3", async (req, res) => {
     resend.emails.send({
       from: "orders@adercraft.in",
       to: "adercraft39@gmail.com",   // where you want to receive
-      subject: "New Portfolio Order Received 🚀",
+      subject: "New Portfolio 3 Order Received 🚀",
       html: `
         <h3>New Portfolio Submission</h3>
         <p><strong>Name:</strong> ${req.body.name}</p>

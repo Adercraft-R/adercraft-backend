@@ -77,7 +77,7 @@ app.post("/submit", async (req, res) => {
       `
     };
     // Save first
-    await newOrder.save();
+    await Order.save();
     
     // Send mail in background (non-blocking)
     transporter.sendMail(mailOptions)
@@ -132,7 +132,7 @@ app.post("/submit-portfolio1", async (req, res) => {
       `
     };
 // Save first
-    await newOrder.save();
+    await newPortfolio.save();
     
     // Send mail in background (non-blocking)
     transporter.sendMail(mailOptions)
@@ -354,7 +354,7 @@ app.post("/submit-contact", async (req, res) => {
     };
 
     // Save first
-    await newOrder.save();
+    await newContact.save();
     
     // Send mail in background (non-blocking)
     transporter.sendMail(mailOptions)
